@@ -33,18 +33,17 @@ app.get('/validarfecha/:ano/:mes/:dia', (req, res) => {
 
 app.get('/matematica/sumar', (req, res) => {
     let suma = sumar(parseInt(req.query.n1), parseInt(req.query.n2))
-    // res.status(200).send('Todo OK!');
-    res.send(`El resultado de la suma es: ${suma}`)
+    res.status(200).send(`El resultado de la suma es: ${suma}`)
 })
 
 app.get('/matematica/restar', (req, res) => {
     let resta = restar(parseInt(req.query.n1), parseInt(req.query.n2))
-    res.send(`El resultado de la resta es: ${resta}`)
+    res.status(200).send(`El resultado de la resta es: ${resta}`)
 })
 
 app.get('/matematica/multiplicar', (req, res) => {
     let multiplicacion = multiplicar(parseInt(req.query.n1), parseInt(req.query.n2))
-    res.send(`El resultado de la multiplicacion es: ${multiplicacion}`)
+    res.status(200).send(`El resultado de la multiplicacion es: ${multiplicacion}`)
 })
 
 app.get('/matematica/dividir', (req, res) => {
@@ -54,7 +53,7 @@ app.get('/matematica/dividir', (req, res) => {
     }
     else{
         let division = dividir(parseInt(req.query.n1), parseInt(req.query.n2))
-        res.send(`El resultado de la division es: ${division}`)
+        res.status(200).send(`El resultado de la division es: ${division}`)
     }
 })
 
@@ -62,28 +61,28 @@ app.get('/matematica/dividir', (req, res) => {
 
 app.get('/omdb/searchbypage', async (req, res) => {
     let resultado = await OMDBSearchByPage(req.query.search, parseInt(req.query.p))
-    res.send(resultado)
+    res.status(200).send(resultado)
 })
 
 app.get('/omdb/searchcomplete', async (req, res) => {
     let resultado = await OMDBSearchComplete(req.query.search)
-    res.send(resultado)
+    res.status(200).send(resultado)
 })
 
 app.get('/omdb/getbyomdbid', async (req, res) => {
     let resultado = await OMDBGetByImdbID(req.query.i)
-    res.send(resultado)
+    res.status(200).send(resultado)
 })
 
 // Modulo Alumno
 
 app.get('/alumnos', (req, res) => {
-    res.send(alumnosArray)
+    res.status(200).send(alumnosArray)
 })
 
 app.get('/alumnos/:dni', (req, res) => {
     let alumno = alumnosArray.find((element) => element.dni === req.params.dni)
-    res.send(alumno)
+    res.status(200).send(alumno)
 })
 
 app.post('/alumnos', (req, res) => {
